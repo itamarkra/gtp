@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>לוח ניקוד</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>🏆 לוח ניקוד</h1>
@@ -20,7 +20,45 @@
     fetch("scores.json")
       .then(res => res.json())
       .then(data => {
-        // ממיין לפי נקודות
+        // ממיין לפי נקודות מהגבוה לנמוך
         data.sort((a, b) => b.points - a.points);
 
-        const podium = docum
+        const podium = document.getElementById("podium");
+        const list = document.getElementById("score-list");
+
+        const places = [
+          { class: "place-2", label: "🥈" },
+          { class: "place-1", label: "🥇" },
+          { class: "place-3", label: "🥉" }
+        ];
+
+        // מנקה לפני יצירה (רק אם הטעינה חוזרת)
+        podium.innerHTML = "";
+        list.innerHTML = "";
+
+        // יוצרים את הפודיום (3 הראשונים)
+        for (let i = 0; i < 3 && i < data.length; i++) {
+          const person = data[i];
+          const div = document.createElement("div");
+          div.className = `place ${places[i].class}`;
+          div.innerHTML = `
+            <div>${places[i].label}</div>
+            <div>${person.points}</div>
+            <div class="podium-name">${person.name}</div>
+          `;
+          podium.appendChild(div);
+        }
+
+        // מציגים את שאר המשתמשים מתחת לפודיום
+        for (let i = 3; i < data.length; i++) {
+          const li = document.createElement("li");
+          li.textContent = `${data[i].name}: ${data[i].points} נקודות`;
+          list.appendChild(li);
+        }
+      })
+      .catch(err => {
+        console.error("שגיאה בטעינת הנתונים:", err);
+      });
+  </script>
+</body>
+</html>
