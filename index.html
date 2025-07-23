@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>לוח ניקוד</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🏆 לוח ניקוד</h1>
+
+  <div class="podium" id="podium">
+    <!-- המקומות הראשונים ייכנסו כאן -->
+  </div>
+
+  <ul class="score-list" id="score-list">
+    <!-- שאר המשתמשים -->
+  </ul>
+
+  <script>
+    fetch("scores.json")
+      .then(res => res.json())
+      .then(data => {
+        // ממיין לפי נקודות
+        data.sort((a, b) => b.points - a.points);
+
+        const podium = docum
