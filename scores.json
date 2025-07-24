@@ -1,7 +1,7 @@
 [
   { "name": "וופלי", "points": 24 },
   { "name": "עדי", "points": 20 },
-  { "name": "אמונה", "points": 13 },
+  { "name": "אמונה", "points": 14 },
   { "name": "איילה", "points": 9 },
   { "name": "ניקה", "points": 9 },
   { "name": "שוקי", "points": 8 },
@@ -15,6 +15,6 @@
   { "name": "עמית", "points": 3 },
   { "name": "כלבלבי", "points": 3 },
   { "name": "רונית", "points": 2 },
-  { "name": "שרי", "points": 2 },
+  { "name": "שרי", "points": 3 },
   { "name": "אריאל", "points": 1 }
 ]
